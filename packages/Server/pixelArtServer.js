@@ -1,9 +1,10 @@
 
-const user = require('./user');
+const {user,pixel,pixelBoard} = require('./Schemas');
+const Kitten = require('./kitten');
 const http = require('http');
 const express = require('express'); 
 const {MongoClient} = require('mongodb');
-
+const  {Schema, model, mongoose} = require('mongoose');
 const app = express();
 const PORT = 8080;
 
@@ -36,19 +37,62 @@ async function run() {
     await client.close();
     }
    }
-
-
+  
+   async function main() {
+    await mongoose.connect(uri);
+    
+    // use `await mongoose.connect('mongodb://user:password@localhost:27017/test');` if your database has auth enabled
+  }
 
    run().catch(console.dir);
+main().catch(err => console.log(err));
 
 
 
+//const myuser = await user.create({ name: 'Silence',prenom: 'alice',type:'admin'});
+
+ // const myuser = new user({ name: 'Silence',prenom: 'alice',type:'admin'});
+
+//
+
+
+
+async function toSave() {
+   /* try{
+        const myuser = await user.create({ name: 'Alice',prenom: 'thirty',type:'synthesis'});
+    
+    try{
+
+        const myPixel = await pixel.create({isChecked:false,color: 'red',user: myuser._id})
+
+
+    }catch(error){  
+            console.log("erreur saving pixel")
+
+    }
+    
+    }catch(error){
+        console.log("erreur saving user")
+    }
+   
+    */
+
+    user.find({name : 'Alice'}).populate('pixels').exec((err,user) => {
+        if(err) return handleError(err);
+        console.log(user.length)
+    });
+
+
+    //console.log(myuser.name+" "+myuser.type+" "+myuser.prenom); // 'Silence'
+    //await myuser.save();
+}
+toSave().catch(err => console.log(err));
 app.get('/', (req, res) => {
     const u = new user("saf","saf","daf");
     res.send('Hello World'+ u.name);
    });
 
-
+      
 
 
 //Démarrage du serveur sur le port 8085

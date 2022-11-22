@@ -1,7 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import {useEffect} from "react"
 
 function App() {
+useEffect(() =>{
+  
+     fetch('/helloWorld').then(function (res) {Promise.all()})
+ 
+},[])
+
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +26,7 @@ function App() {
         </a>
       </header>
     </div>
+    
   );
 }
 

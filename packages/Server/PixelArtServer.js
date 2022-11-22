@@ -8,8 +8,13 @@ const PORT = 8080;
 
 require('dotenv').config();
 
-const cors = require('cors')
-app.use(cors())
+const cors = require('cors');
+require('dotenv').config();
+
+app.use(cors({
+    origin: 'http://localhost:3000'
+  }));
+
 
 
 
@@ -79,9 +84,9 @@ async function toSave() {
 
      */
 
-    user.find({name: 'Alice'}).populate('pixels').exec((err, user) => {
+    User.find({name: 'Alice'}).populate('pixels').exec((err, User) => {
         if (err) return handleError(err);
-        console.log(user.length)
+        console.log(User.length)
     });
 
 

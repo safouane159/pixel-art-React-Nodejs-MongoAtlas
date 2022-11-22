@@ -3,13 +3,9 @@ import './App.css';
 import {useEffect} from "react"
 
 function App() {
-useEffect(() =>{
-  
-     fetch('http://localhost:8080/helloWorld').then((result) => {
-         console.log(result)
-     })
- 
-},[])
+  useEffect(() =>{
+    fetch('http://localhost:8080/helloWorld').then(  res => res.text().then( res1 => console.log("here "+ res1)  )   )
+  },[])
 
   return (
     <div className="App">
@@ -30,9 +26,7 @@ useEffect(() =>{
     </div>
     
   );
-  useEffect(() =>{
-  fetch('http://localhost:8080/helloWorld').then(  res => res.text().then( res1 => console.log("here "+ res1)  )   )
-},[])
+
 
 
 

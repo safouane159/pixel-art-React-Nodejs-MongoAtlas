@@ -90,6 +90,11 @@ app.get('/', (req, res) => {
     res.send('Hello World' + u.name);
 });
 
+app.get('/helloWorld', (req, res) => {
+   
+    res.send('Raoua JTM <');
+});
+
 
 //Démarrage du serveur sur le port 8080
 

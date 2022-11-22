@@ -5,7 +5,7 @@ import {useEffect} from "react"
 function App() {
 useEffect(() =>{
   
-     fetch('http://localhost:8080/helloWorld').then(  res => res.text().then( res1 => console.log("here "+ res1)  )   )
+     fetch('/helloWorld').then(function (res) {Promise.all()})
  
 },[])
 
@@ -28,6 +28,13 @@ useEffect(() =>{
     </div>
     
   );
+  useEffect(() =>{
+  fetch('http://localhost:8080/helloWorld').then(  res => res.text().then( res1 => console.log("here "+ res1)  )   )
+},[])
+
+
+
 }
+
 
 export default App;

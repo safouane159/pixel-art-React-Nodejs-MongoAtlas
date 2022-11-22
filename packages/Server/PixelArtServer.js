@@ -6,18 +6,13 @@ const {Schema, model, mongoose} = require('mongoose');
 const app = express();
 const PORT = 8080;
 
-const cors = require('cors');
 require('dotenv').config();
-app.use(cors({
-    origin: 'http://localhost:3000'
-  }));
+
 const {
     MONGO_URI
 } = process.env;
 
 console.log(MONGO_URI);
-
-
 
 const uri = MONGO_URI
 
@@ -35,8 +30,8 @@ async function run() {
         console.log('Connected successfully to server');
 
 
-        const UserRoute = require('./Routes/User');
-        app.use('/users', UserRoute);
+        const UserRoute=require('./Routes/User')
+        app.use('/users',UserRoute)
 
     } finally {
         // Ensures that the client will close when you finish/error
@@ -79,9 +74,9 @@ async function toSave() {
 
      */
 
-    User.find({name: 'Alice'}).populate('pixels').exec((err, User) => {
+    user.find({name: 'Alice'}).populate('pixels').exec((err, user) => {
         if (err) return handleError(err);
-        console.log(User.length)
+        console.log(user.length)
     });
 
 
@@ -96,8 +91,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/helloWorld', (req, res) => {
-
-    res.send('Raoua JTM <');
+   
+    res.send('Raoua');
 });
 
 

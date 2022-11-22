@@ -74,7 +74,7 @@ async function toSave() {
 
      */
 
-    user.find({name: 'Alice'}).populate('pixels').exec((err, user) => {
+    User.find({name: 'Alice'}).populate('pixels').exec((err, user) => {
         if (err) return handleError(err);
         console.log(user.length)
     });

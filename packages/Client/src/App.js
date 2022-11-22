@@ -5,7 +5,9 @@ import {useEffect} from "react"
 function App() {
 useEffect(() =>{
   
-     fetch('/helloWorld').then(function (res) {Promise.all()})
+     fetch('http://localhost:8080/helloWorld').then((result) => {
+         console.log(result)
+     })
  
 },[])
 

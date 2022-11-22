@@ -8,6 +8,11 @@ const PORT = 8080;
 
 require('dotenv').config();
 
+const cors = require('cors')
+app.use(cors())
+
+
+
 const {
     MONGO_URI
 } = process.env;

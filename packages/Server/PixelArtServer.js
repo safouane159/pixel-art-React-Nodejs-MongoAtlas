@@ -30,8 +30,8 @@ async function run() {
         console.log('Connected successfully to server');
 
 
-        const UserRoute=require('./Routes/User')
-        app.use('/users',UserRoute)
+        const UserRoute = require('./Routes/User');
+        app.use('/users', UserRoute);
 
     } finally {
         // Ensures that the client will close when you finish/error
@@ -91,7 +91,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/helloWorld', (req, res) => {
-   
+
     res.send('Raoua JTM <');
 });
 

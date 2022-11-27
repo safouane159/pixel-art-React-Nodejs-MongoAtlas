@@ -24,7 +24,7 @@ function PixelBoard() {
     /*Array of rows*/
     let rows = [];
     for (let i = 0; i < height; i++) {
-        rows.push(<Row key={i} width={width} background={background}/>)
+        rows.push(<Row key={i} positionX = {i} width={width} background={background}/>)
     }
 
 

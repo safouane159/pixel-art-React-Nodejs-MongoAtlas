@@ -11,6 +11,8 @@ function Pixel(props) {
     const [color, setColor] = useState("#f8f2f2");
     const [newColor, setNewColor] = useState("fff");
     const [date, setDate] = useState();
+    const [positionX,setPositionX] = useState(props.positionX);
+    const [positionY,setPositionY] = useState(props.positionY);
 
 
     /*Change newColor from props*/

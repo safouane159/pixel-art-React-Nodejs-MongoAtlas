@@ -1,12 +1,22 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./Pixel.css";
 
-function Pixel() {
+function Pixel(props) {
 
+    /*Props*/
+    const {background} = props;
+
+    /*Pixel states*/
     const [checked, setChecked] = useState(false);
     const [color, setColor] = useState("#f8f2f2");
-    const [newColor, setNewColor] = useState("red");
+    const [newColor, setNewColor] = useState("fff");
     const [date, setDate] = useState();
+
+
+    /*Change newColor from props*/
+    useEffect(() => {
+        setNewColor(background);
+    },[background]);
 
 
     const changePixelColor = () => {

@@ -1,36 +1,40 @@
 import React, {useState} from 'react';
+import {TwitterPicker} from 'react-color';
 
 import "./PixelBoard.css";
 import Row from "../Row/Row";
-import ColorPanel from "../ColorPanel/ColorPanel";
 
 
 function PixelBoard() {
 
-
-    const [width, setWidth] = useState(70);
+    /* PixelBoard States */
+    const [width, setWidth] = useState(16);
     const [height, setHeight] = useState(16);
     const [dateCreation, setDateCreation] = useState();
     const [dateFin, setDateFin] = useState();
     const [title, setTitle] = useState("");
 
-
-
-
-    let rows = [];
-
-    for (let i = 0; i < height; i++){
-        rows.push(<Row width = {width}/>)
+    /*TwitterPicker states*/
+    const [background, setBackground] = useState("#4d8fd9");
+    const handleChangeComplete = (color) => {
+        setBackground(color.hex);
     }
 
 
-
+    /*Array of rows*/
+    let rows = [];
+    for (let i = 0; i < height; i++) {
+        rows.push(<Row key={i} width={width} background={background}/>)
+    }
 
 
     return (
         <div className={"pixelBoard"}>
             <div className="pixelBoardColorPanel">
-                <ColorPanel/>
+                <TwitterPicker
+                    color={background}
+                    onChangeComplete={handleChangeComplete}
+                />
             </div>
             <div className="pixelBoardRows">
                 {rows}

@@ -7,12 +7,12 @@ function Row(props) {
 
 
 
-    const {width} = props;
+    const {width,background} = props;
 
     let pixels = [];
 
     for (let i = 0 ; i< width ; i++){
-        pixels.push(<Pixel/>);
+        pixels.push(<Pixel key={i} background={background} />);
     }
 
     return (

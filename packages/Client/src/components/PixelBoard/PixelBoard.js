@@ -13,6 +13,7 @@ function PixelBoard() {
     const [dateCreation, setDateCreation] = useState();
     const [dateFin, setDateFin] = useState();
     const [title, setTitle] = useState("");
+    const [isPixelOverride,setIsPixelOverride] = useState(false);
 
     /*TwitterPicker states*/
     const [background, setBackground] = useState("#4d8fd9");
@@ -24,7 +25,13 @@ function PixelBoard() {
     /*Array of rows*/
     let rows = [];
     for (let i = 0; i < height; i++) {
-        rows.push(<Row key={i} positionX = {i} width={width} background={background}/>)
+        rows.push(<Row
+            key={i}
+            positionX = {i}
+            width={width}
+            background={background}
+            isPixelOverride={isPixelOverride}
+        />)
     }
 
 

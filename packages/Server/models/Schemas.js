@@ -2,7 +2,7 @@ const {Schema, model, mongoose} = require('mongoose');
 
 const userSchema = new mongoose.Schema({
     name: String,
-    pseudo: String,
+    pseudo: { type: String, unique: true }, 
     type: String,
     pixels: [{type: Schema.Types.ObjectId, ref: "Pixel"}],
     pixelBoard: {type: Schema.Types.ObjectId, ref: "PixelBoard"}
@@ -21,9 +21,10 @@ const pixelSchema = new mongoose.Schema({
 
 const pixelBoardSchema = new mongoose.Schema({
     isFinished: Boolean,
+    isFinal: Boolean,
     dateCreation: Date,
     dateFinish: Date,
-    //isWhite: Boolean,
+    isWhite: Boolean,
     delay: Number,
     titre: String,
     height: Number,

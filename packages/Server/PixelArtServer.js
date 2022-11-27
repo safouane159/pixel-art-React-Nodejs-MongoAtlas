@@ -1,15 +1,20 @@
-const {User, Pixel, PixelBoard} = require('./Schemas');
+const {User, Pixel, PixelBoard} = require('./models/Schemas');
+const UserService = require("./services/userService");
 const http = require('http');
 const express = require('express');
 const {MongoClient} = require('mongodb');
 const {Schema, model, mongoose} = require('mongoose');
 const app = express();
 const PORT = 8080;
-
+const router = express.Router();
 require('dotenv').config();
-
+const userRouter = require("./routes/userRoutes");
+const pixelRouter = require("./routes/pixelRoutes");
+const pixelBoardRouter = require("./routes/pixelBoardRoutes");
 const cors = require('cors');
 require('dotenv').config();
+
+
 
 app.use(cors({
     origin: 'http://localhost:3000'
@@ -29,48 +34,22 @@ const uri = MONGO_URI
 // Create a new MongoClient
 const client = new MongoClient(uri);
 
-async function run() {
-
-    try {
-
-        // Connect the client to the server (optional starting in v4.7)
-        await client.connect();
-        // Establish and verify connection
-        await client.db('admin').command({ping: 1});
-        console.log('Connected successfully to server');
-
-
-        const UserRoute=require('./Routes/User')
-        app.use('/users',UserRoute)
-
-    } finally {
-        // Ensures that the client will close when you finish/error
-        await client.close();
-    }
-}
 
 async function main() {
     await mongoose.connect(uri);
 }
 
-run().catch(console.dir);
+
 main().catch(err => console.log(err));
 
 
-//const myuser = await user.create({ name: 'Silence',prenom: 'alice',type:'admin'});
-
-// const myuser = new user({ name: 'Silence',prenom: 'alice',type:'admin'});
-
-//
-
-
 async function toSave() {
-    /* try{
-         const myuser = await user.create({ name: 'Alice',prenom: 'thirty',type:'synthesis'});
+     try{
+        // const myuser = await User.create({ name: 'Alice',prenom: 'thirty',type:'synthesis'});
 
      try{
 
-         const myPixel = await pixel.create({isChecked:false,color: 'red',user: myuser._id})
+        // const myPixel = await Pixel.create({isChecked:false,color: 'red',user: myuser._id})
 
 
      }catch(error){
@@ -82,12 +61,13 @@ async function toSave() {
          console.log("erreur saving user")
      }
 
-     */
+     
+     /*const myuser = await User.create({ name: 'Alice',pseudo: 'thirty',type:'synthesis'});
 
     User.find({name: 'Alice'}).populate('pixels').exec((err, User) => {
         if (err) return handleError(err);
         console.log(User.length)
-    });
+    });*/
 
 
     //console.log(myuser.name+" "+myuser.type+" "+myuser.prenom); // 'Silence'
@@ -95,13 +75,31 @@ async function toSave() {
 }
 
 toSave().catch(err => console.log(err));
+
 app.get('/', (req, res) => {
-    const u = new user("saf", "saf", "daf");
-    res.send('Hello World' + u.name);
+  //  const u = new User("saf", "saf", "daf");
+    res.send('Hello World' );
 });
 
+/*app.get('/users', async (req, res) => {
+ 
+    try {
+        const users = await UserService.getAllUsers();
+        console.log(users);
+        res.json({ data: users, status: "success" });
+      } catch (err) {
+        res.status(500).json({ error: err.message });
+      }
+  });*/
+
+
+
+  app.use("/api/users", userRouter);
+
+  app.use("/api/pixels", pixelRouter);
+  app.use("/api/pixelBoard", pixelBoardRouter);
+  
 app.get('/helloWorld', (req, res) => {
-   
     res.send('Raoua');
 });
 

@@ -1,0 +1,12 @@
+.pixelBoard{
+    display: flex;
+    flex-direction: column;
+}
+
+.pixelBoardColorPanel{
+    display: flex;
+    justify-content: center;
+}
+
+.pixelBoardRows{
+}

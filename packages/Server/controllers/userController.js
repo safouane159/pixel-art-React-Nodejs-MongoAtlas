@@ -11,6 +11,9 @@ exports.getAllUsers = async (req, res) => {
 };
  
 exports.createUser = async (req, res) => {
+
+console.log("hello"+req.body)
+
     try {
       const user = await UserService.createUser(req.body);
       res.json({ data: user, status: "success" });

@@ -13,7 +13,7 @@ const pixelRouter = require("./routes/pixelRoutes");
 const pixelBoardRouter = require("./routes/pixelBoardRoutes");
 const cors = require('cors');
 require('dotenv').config();
-
+app.use(express.json())
 
 
 app.use(cors({
@@ -81,7 +81,7 @@ app.get('/', (req, res) => {
     res.send('Hello World' );
 });
 
-/*app.get('/users', async (req, res) => {
+app.get('/tests', async (req, res) => {
  
     try {
         const users = await UserService.getAllUsers();
@@ -90,7 +90,7 @@ app.get('/', (req, res) => {
       } catch (err) {
         res.status(500).json({ error: err.message });
       }
-  });*/
+  });
 
 
 

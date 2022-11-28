@@ -5,8 +5,14 @@
     return await User.find();
   };
    
-  exports.createUser = async (User) => {
-    return await User.create(User);
+  exports.createUser = async (user) => {
+
+
+
+    return await User.create(user);
+
+
+
   };
   exports.getUserById =  async(id) => {
 
@@ -14,11 +20,14 @@
     return await User.findById(id );
 
   };
+
    
-  exports.updateUser = async (id, User) => {
-    return await User.findByidAndUpdate(id, User);
+  exports.updateUser = async (id, user) => {
+    return await User.findByidAndUpdate(id, user);
   };
    
+
+
   exports.deleteUser = async (id) => {
     return await User.findByIdAndDelete(id);
   };

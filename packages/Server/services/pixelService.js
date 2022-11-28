@@ -5,8 +5,8 @@ exports.getAllPixels = async () => {
    return await Pixel.find();
  };
   
- exports.createPixel = async (Pixel) => {
-   return await Pixel.create(Pixel);
+ exports.createPixel = async (pixel) => {
+   return await Pixel.create(pixel);
  };
  exports.getPixelById =  async(id) => {
 
@@ -15,8 +15,8 @@ exports.getAllPixels = async () => {
 
  };
   
- exports.updatePixel = async (id, Pixel) => {
-   return await Pixel.findByidAndUpdate(id, Pixel);
+ exports.updatePixel = async (id, pixel) => {
+   return await Pixel.findByidAndUpdate(id, pixel);
  };
   
  exports.deletePixel = async (id) => {

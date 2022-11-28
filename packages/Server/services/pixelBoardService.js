@@ -5,8 +5,8 @@ exports.getAllPixelBoards = async () => {
    return await PixelBoard.find();
  };
   
- exports.createPixelBoard = async (PixelBoard) => {
-   return await PixelBoard.create(PixelBoard);
+ exports.createPixelBoard = async (pixelBoard) => {
+   return await PixelBoard.create(pixelBoard);
  };
  exports.getPixelBoardById =  async(id) => {
 
@@ -15,8 +15,8 @@ exports.getAllPixelBoards = async () => {
 
  };
   
- exports.updatePixelBoard = async (id, PixelBoard) => {
-   return await PixelBoard.findByidAndUpdate(id, PixelBoard);
+ exports.updatePixelBoard = async (id, pixelBoard) => {
+   return await PixelBoard.findByidAndUpdate(id, pixelBoard);
  };
   
  exports.deletePixelBoard = async (id) => {

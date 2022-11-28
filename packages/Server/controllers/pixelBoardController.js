@@ -11,6 +11,8 @@ exports.getAllPixelBoards = async (req, res) => {
 };
  
 exports.createPixelBoard = async (req, res) => {
+
+  
     try {
       const pixelBoard = await PixelBoardService.createPixelBoard(req.body);
       res.json({ data: pixelBoard, status: "success" });

@@ -1,11 +1,17 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {TwitterPicker} from 'react-color';
 
 import "./PixelBoard.css";
 import Row from "../Row/Row";
+import {useParams} from "react-router-dom";
 
 
 function PixelBoard() {
+
+    /*Id from React Router*/
+    let {id} = useParams();
+    const server_url = "http://localhost:8080";
+
 
     /* PixelBoard States */
     const [width, setWidth] = useState(20);
@@ -13,7 +19,7 @@ function PixelBoard() {
     const [dateCreation, setDateCreation] = useState();
     const [dateFin, setDateFin] = useState();
     const [title, setTitle] = useState("");
-    const [isPixelOverride,setIsPixelOverride] = useState(false);
+    const [isPixelOverride, setIsPixelOverride] = useState(false);
 
     /*TwitterPicker states*/
     const [background, setBackground] = useState("#4d8fd9");
@@ -22,12 +28,32 @@ function PixelBoard() {
     }
 
 
+    /*Get pixelBoard infos from DB*/
+
+    async function getDataBoardFromAPI() {
+        let response = await fetch(server_url + "/api/pixelBoard/" + id, {
+            method: "GET"
+        });
+
+        let data = (await response.json()).data;
+
+        setHeight(data.height);
+        setWidth(data.width);
+        setIsPixelOverride(!data.isFinal);
+        console.log("V:> "+isPixelOverride)
+    }
+
+    useEffect(() => {
+        getDataBoardFromAPI()
+    });
+
+
     /*Array of rows*/
     let rows = [];
     for (let i = 0; i < height; i++) {
         rows.push(<Row
             key={i}
-            positionX = {i}
+            positionX={i}
             width={width}
             background={background}
             isPixelOverride={isPixelOverride}

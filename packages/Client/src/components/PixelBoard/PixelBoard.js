@@ -8,8 +8,8 @@ import Row from "../Row/Row";
 function PixelBoard() {
 
     /* PixelBoard States */
-    const [width, setWidth] = useState(16);
-    const [height, setHeight] = useState(16);
+    const [width, setWidth] = useState(20);
+    const [height, setHeight] = useState(20);
     const [dateCreation, setDateCreation] = useState();
     const [dateFin, setDateFin] = useState();
     const [title, setTitle] = useState("");

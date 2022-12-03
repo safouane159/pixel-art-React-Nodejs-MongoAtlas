@@ -47,7 +47,7 @@ function PixelBoard() {
     }
 
     useEffect(() => {
-        getDataBoardFromAPI().then(r => console.log("then : " + isPixelOverride))
+        getDataBoardFromAPI()
     }, []);
 
 

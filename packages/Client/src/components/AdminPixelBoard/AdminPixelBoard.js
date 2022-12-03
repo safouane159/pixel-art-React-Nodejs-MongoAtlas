@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import "./AdminPixelBoard.css";
+import pixel from "../Pixel/Pixel";
 
 function AdminPixelBoard() {
 
@@ -34,9 +35,10 @@ function AdminPixelBoard() {
             body: JSON.stringify(pixelBoard),
         }).then(r => r.json()).then(async response => {
 
+            let pixels_id = [];
+            let pixelBoardID = "";
 
             /*Creation Pixel Atteched to PixelBoard*/
-
             for (let i = 0; i < pixelBoard.width; i++) {
                 for (let j = 0; j < pixelBoard.height; j++) {
 
@@ -46,6 +48,7 @@ function AdminPixelBoard() {
                     pixel.positionX = i;
                     pixel.positionY = j;
                     pixel.pixelBoard = response.data._id;
+                    pixelBoardID = response.data._id;
 
 
                     await fetch(server_url + "/api/pixels/", {
@@ -55,13 +58,30 @@ function AdminPixelBoard() {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify(pixel),
+                    }).then(response => response.json()).then(response => {
+                        pixels_id.push(response.data._id);
                     });
 
                 }
             }
 
-
+            return [pixels_id, pixelBoardID];
             /*END Creation Pixel Atteched to PixelBoard*/
+        }).then(async (params) => {
+            /*Update pixels of PixelBoard*/
+
+            let pixels_id = params[0];
+            let pixelBoardID = params[1];
+
+
+            await fetch(server_url + '/api/pixelBoard/updatePixel/' + pixelBoardID, {
+                method: "PUT",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(pixels_id),
+            })
         });
 
         /*END Creation PixelBoard*/

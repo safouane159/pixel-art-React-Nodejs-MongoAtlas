@@ -31,7 +31,7 @@ exports.getByPosition = async (req, res) => {
         });
 
 
-        res.json({dataa: pixelId, status: "success"});
+        res.json({data: pixelId, status: "success"});
 
 
     } catch {

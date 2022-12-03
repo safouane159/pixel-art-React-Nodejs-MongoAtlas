@@ -5,12 +5,17 @@ const router = express.Router()
 
 
 const {
+   getByPosition,
     getAllPixels,
     createPixel,
     getPixelById,
     updatePixel,
     deletePixel,
   } = require("../controllers/pixelController");
+
+
+
+  router.route("/getByPosition").get(getByPosition);
 
   router.route("/").get(getAllPixels).post(createPixel);
 

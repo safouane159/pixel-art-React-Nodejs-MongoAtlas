@@ -15,7 +15,7 @@ const {
 
 
 
-  router.route("/updatePixel").put(PbUpdatePixel);
+  router.route("/updatePixel/:id").put(PbUpdatePixel);
   router.route("/").get(getAllPixelBoards).post(createPixelBoard);
 
   router.route("/:id").get(getPixelBoardById).put(updatePixelBoard).delete(deletePixelBoard);

@@ -43,7 +43,7 @@ function AdminPixelBoard() {
 
     return (
         <div className={"adminPixelBoard"}>
-            AdminPixelBoard
+            <h1>Enter your Dimensions</h1>
 
             <form onSubmit={hundleSubmitForm}>
 
@@ -64,11 +64,12 @@ function AdminPixelBoard() {
                     <input type="text" id={"title"}/>
                 </div>
                 <div>
+                <label htmlFor="title">Dimensions</label>
                     <input type="number" id={"height"} defaultValue={16}/>
                     <input type="number" id={"width"} defaultValue={16}/>
                 </div>
-
-                <button>Créer un pixel board</button>
+                <input type="submit" value="Créer un pixel board"></input>
+                
             </form>
         </div>
     );

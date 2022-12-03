@@ -19,12 +19,19 @@ exports.getAllPixelBoards = async () => {
    return await PixelBoard.findByidAndUpdate(id, pixelBoard);
  };
 
- exports.updatePixels = async (id, pixel) => {
-
+ exports.updatePixels = async (id, pixels) => {
+let y = [];
+  pixels.forEach(  (element) => { 
+    let f = Pixel.findById(element );
+ y.add(f)
+    
+      });
+  
   let e = PixelBoard.findById(id );
-  let r = e.pixels;
-  r.add(pixel)
-  return await PixelBoard.findByidAndUpdate(id, {pixels : r});
+  let r=[];
+  r = e.pixels.concat(y);
+
+  return await PixelBoard.findByidAndUpdate(id, {pixels : y });
 };
   
  exports.deletePixelBoard = async (id) => {

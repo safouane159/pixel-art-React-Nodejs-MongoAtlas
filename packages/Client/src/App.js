@@ -7,6 +7,7 @@ import Login from './components/Login/Login';
 import useToken from './useToken';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
+import PixelCard from './components/PixelCards/PixelCard'
 
 function setToken(userToken) {
     sessionStorage.setItem('token', JSON.stringify(userToken));
@@ -28,6 +29,11 @@ function App() {
             <BrowserRouter>
                 <Navbar></Navbar>
 
+                <Switch>
+                    <Route path="/PixelCard">
+                        <PixelCard/>
+                    </Route>
+                </Switch>
                 <Switch>
                     <Route path="/pixelBoard">
                         <AdminPixelBoard/>

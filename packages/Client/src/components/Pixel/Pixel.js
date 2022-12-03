@@ -4,7 +4,7 @@ import "./Pixel.css";
 function Pixel(props) {
 
     /*Props*/
-    const {background, positionX, positionY, isPixelOverride} = props;
+    const {background, positionX, positionY, isPixelOverride, myPixelBoard} = props;
 
     /*Pixel states*/
     const [checked, setChecked] = useState(false);
@@ -14,7 +14,7 @@ function Pixel(props) {
     const [posX, setPositionX] = useState(positionX);
     const [posY, setPositionY] = useState(positionY);
     const [isOverride, setIsOverride] = useState(isPixelOverride);
-
+    //console.log("Pixel : "+isOverride);
 
     /*Change newColor from props*/
     useEffect(() => {
@@ -22,12 +22,22 @@ function Pixel(props) {
     }, [background]);
 
 
-    const changePixelColor = () => {
+    const changePixelColor = async () => {
 
         if (checked && !isOverride)
             return;
         setColor(newColor);
         setChecked(true);
+
+        /*await fetch(server_url + "/api/pixels/", {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(pixel),
+        });*/
+
     }
 
     return (

@@ -23,6 +23,8 @@
 
    
   exports.updateUser = async (id, user) => {
+
+  
     return await User.findByidAndUpdate(id, user);
   };
    

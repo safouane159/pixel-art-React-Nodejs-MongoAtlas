@@ -17,7 +17,7 @@ app.use(express.json())
 
 
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: '*'
   }));
 
 
@@ -94,7 +94,6 @@ app.get('/tests', async (req, res) => {
 
 
   app.use("/api/users", userRouter);
-
   app.use("/api/pixels", pixelRouter);
   app.use("/api/pixelBoard", pixelBoardRouter);
   

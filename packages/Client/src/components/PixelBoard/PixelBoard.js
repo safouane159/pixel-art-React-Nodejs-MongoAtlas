@@ -22,7 +22,7 @@ function PixelBoard() {
     const [isPixelOverride, setIsPixelOverride] = useState(false);
 
     /*TwitterPicker states*/
-    const [background, setBackground] = useState("#4d8fd9");
+    const [background, setBackground] = useState("#bec9d3");
     const handleChangeComplete = (color) => {
         setBackground(color.hex);
     }

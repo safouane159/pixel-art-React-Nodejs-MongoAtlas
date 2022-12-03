@@ -2,6 +2,7 @@ import './App.css';
 import AdminPixelBoard from "./components/AdminPixelBoard/AdminPixelBoard";
 import {BrowserRouter, HashRouter, Route} from "react-router-dom";
 import PixelBoard from "./components/PixelBoard/PixelBoard";
+import Navbar from './components/Navbar/Navbar';
 
 
 function App() {
@@ -9,12 +10,9 @@ function App() {
 
     return (
         <div className="App">
+     
             <BrowserRouter>
-                <Route path="/pixelBoard">
-                    <AdminPixelBoard/>
-                </Route>
-            </BrowserRouter>
-            <BrowserRouter>
+            <Navbar />
                 <Route path={"/pixelBoard/:id"} children={<PixelBoard/>}/>
             </BrowserRouter>
         </div>

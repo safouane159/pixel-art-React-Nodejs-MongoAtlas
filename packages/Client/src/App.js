@@ -6,6 +6,7 @@ import PixelBoard from "./components/PixelBoard/PixelBoard";
 import Login from './components/Login/Login';
 import useToken from './useToken';
 import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
 
 function setToken(userToken) {
     sessionStorage.setItem('token', JSON.stringify(userToken));
@@ -21,25 +22,20 @@ function App() {
 
     const { token, setToken } = useToken();
 
-    if(!token) {
-        return <Login setToken={setToken} />
-      }
+    
 
     return (
         <div className="App">
-     
-            <BrowserRouter>
+ <BrowserRouter>
+ <Navbar></Navbar>
+
                 <Switch>
-                <Route path="/pixelBoard">
-                    <AdminPixelBoard/>
-                </Route>
+                    <Route path="/pixelBoard">
+                        <AdminPixelBoard/>
+                    </Route>
                 </Switch>
-            </BrowserRouter>
-            <BrowserRouter>
-            <Switch>
-            <Navbar />
                 <Route path={"/pixelBoard/:id"} children={<PixelBoard/>}/>
-            </Switch>
+                <Footer />
             </BrowserRouter>
         </div>
 

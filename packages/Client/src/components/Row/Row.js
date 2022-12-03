@@ -8,6 +8,7 @@ function Row(props) {
 
     const {positionX, width, background, isPixelOverride, myPixelBoard} = props;
 
+    //console.log(positionX);
     let pixels = [];
 
     for (let i = 0; i < width; i++) {

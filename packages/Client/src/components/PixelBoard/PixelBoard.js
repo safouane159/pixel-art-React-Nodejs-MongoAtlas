@@ -14,8 +14,8 @@ function PixelBoard() {
 
 
     /* PixelBoard States */
-    const [width, setWidth] = useState(20);
-    const [height, setHeight] = useState(20);
+    const [width, setWidth] = useState();
+    const [height, setHeight] = useState();
     const [dateCreation, setDateCreation] = useState();
     const [dateFin, setDateFin] = useState();
     const [title, setTitle] = useState("");
@@ -52,7 +52,7 @@ function PixelBoard() {
 
 
     /*Array of rows*/
-    /*let rows = [];
+    let rows = [];
     for (let i = 0; i < height; i++) {
         rows.push(<Row
             key={i}
@@ -60,8 +60,9 @@ function PixelBoard() {
             width={width}
             background={background}
             isPixelOverride={isPixelOverride}
+            myPixelBoard={id}
         />)
-    }*/
+    }
 
 
     return (
@@ -73,7 +74,7 @@ function PixelBoard() {
                 />
             </div>
             <div className="pixelBoardRows">
-                {
+                {/*
                     [...Array(height)].map((x, i) =>
                         <Row
                             key={i}
@@ -83,7 +84,8 @@ function PixelBoard() {
                             isPixelOverride={isPixelOverride}
                             myPixelBoard={id}
                         />)
-                }
+                */}
+                {rows}
             </div>
 
         </div>

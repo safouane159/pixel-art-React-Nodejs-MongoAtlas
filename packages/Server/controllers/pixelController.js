@@ -4,7 +4,7 @@ const { ObjectId } = require("mongodb");
 
 exports.getByPosition = async (req, res) => {
 
-  //http://localhost:8080/api/pixels/getByPosition?pbId=&posY=4&posX=3
+  //http://localhost:8080/api/pixels/getByPosition?pbId=638b8c7a7de9dcf5eba01130&posY=4&posX=3
 
 
   const pb = await PixelBoardService.getPixelBoardById(req.query.pbId);
@@ -74,8 +74,8 @@ exports.createPixel = async (req, res) => {
    
   exports.updatePixel = async (req, res) => {
     try {
-      const pixel = await PixelService.updatePixel(req.params.Pseudo, req.body);
-      res.json({ data: pixel.Pseudo, status: "success" });
+      const pixel = await PixelService.updatePixel(req.params.id, req.body);
+      res.json({ data: pixel.id, status: "success" });
     } catch (err) {
       res.status(500).json({ error: err.message });
     }

@@ -12,7 +12,7 @@ exports.getAllUsers = async (req, res) => {
  
 exports.createUser = async (req, res) => {
 
-console.log("hello"+req.body)
+console.log("hello"+ req.body)
 
     try {
       const user = await UserService.createUser(req.body);
@@ -36,8 +36,9 @@ console.log("hello"+req.body)
    
   exports.updateUser = async (req, res) => {
     try {
-      const user = await UserService.updateUser(req.params.Pseudo, req.body);
-      res.json({ data: user.Pseudo, status: "success" });
+      console.log(req.params.Pseudo)
+      const user = await UserService.updateUser(req.params.id, req.body);
+      res.json({ data: user.id, status: "success" });
     } catch (err) {
       res.status(500).json({ error: err.message });
     }

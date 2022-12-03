@@ -41,7 +41,14 @@ exports.updatePixelBoard = async (req, res) => {
         res.status(500).json({error: err.message});
     }
 };
-
+exports.PbUpdatePixel = async (req, res) => {
+  try {
+      const pixelBoard = await PixelBoardService.updatePixels(req.params.id, req.body);
+      res.json({data: pixelBoard.id, status: "success"});
+  } catch (err) {
+      res.status(500).json({error: err.message});
+  }
+};
 exports.deletePixelBoard = async (req, res) => {
     try {
         const pixelBoard = await PixelBoardService.deletePixelBoard(req.params.Pseudo);

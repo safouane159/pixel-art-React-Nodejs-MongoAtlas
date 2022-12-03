@@ -1,5 +1,43 @@
 const PixelService = require("../services/PixelService");
- 
+const PixelBoardService = require("../services/pixelBoardService");
+const { ObjectId } = require("mongodb");
+
+exports.getByPosition = async (req, res) => {
+
+  //http://localhost:8080/api/pixels/getByPosition?pbId=&posY=4&posX=3
+
+
+  const pb = await PixelBoardService.getPixelBoardById(req.query.pbId);
+
+
+try{
+let isFound= false ;
+  pb.pixels.forEach(  (element) => { 
+
+if ( element.positionX == req.params.posX  && element.positionY == req.params.posY  ){
+
+  res.json({ data: element._id, status: "success" });
+isFound = true;
+
+
+}
+if (isFound == false){
+  res.status(404).send('pixel with X ='+ req.params.posX + 'and Y = ' +req.params.posY +' Not found');
+}
+
+
+
+
+  });
+    
+
+}catch{
+  res.status(404).send('pixelBoard with id ='+ req.params.pbId +' Not found');
+
+}
+
+};
+
 exports.getAllPixels = async (req, res) => {
     try {
         const pixels = await PixelService.getAllPixels();
@@ -9,7 +47,10 @@ exports.getAllPixels = async (req, res) => {
         res.status(500).json({ error: err.message });
       }
 };
- 
+
+
+
+
 exports.createPixel = async (req, res) => {
     try {
       const pixel = await PixelService.createPixel(req.body);

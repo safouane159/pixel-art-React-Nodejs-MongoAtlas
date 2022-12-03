@@ -49,21 +49,15 @@ main().catch(err => console.log(err));
 
 
 async function toSave() {
-     try{
-        // const myuser = await User.create({ name: 'Alice',prenom: 'thirty',type:'synthesis'});
-
+  
      try{
 
-        // const myPixel = await Pixel.create({isChecked:false,color: 'red',user: myuser._id})
-
-
+        const myPixel = await Pixel.create({positionX:3,positionY: 4})
+        const myPb = await PixelBoard.create({pixels:myPixel})
+        await myPb.save();
      }catch(error){
              console.log("erreur saving pixel")
 
-     }
-
-     }catch(error){
-         console.log("erreur saving user")
      }
 
      
@@ -76,10 +70,10 @@ async function toSave() {
 
 
     //console.log(myuser.name+" "+myuser.type+" "+myuser.prenom); // 'Silence'
-    //await myuser.save();
+
 }
 
-toSave().catch(err => console.log(err));
+//toSave().catch(err => console.log(err));
 
 app.get('/', (req, res) => {
   //  const u = new User("saf", "saf", "daf");

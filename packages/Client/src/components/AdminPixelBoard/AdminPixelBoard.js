@@ -73,14 +73,15 @@ function AdminPixelBoard() {
             let pixels_id = params[0];
             let pixelBoardID = params[1];
 
+            pixelBoard.pixels = pixels_id;
 
-            await fetch(server_url + '/api/pixelBoard/updatePixel/' + pixelBoardID, {
+            await fetch(server_url + '/api/pixelBoard/' + pixelBoardID, {
                 method: "PUT",
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(pixels_id),
+                body: JSON.stringify(pixelBoard),
             })
         });
 

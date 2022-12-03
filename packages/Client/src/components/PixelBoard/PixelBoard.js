@@ -40,16 +40,19 @@ function PixelBoard() {
         setHeight(data.height);
         setWidth(data.width);
         setIsPixelOverride(!data.isFinal);
-        console.log("V:> "+isPixelOverride)
+        //  console.log("D:> " + !data.isFinal)
+        //console.log("V:> " + isPixelOverride)
+        //console.log("height:> " + height)
+        //console.log("width:> " + width)
     }
 
     useEffect(() => {
-        getDataBoardFromAPI()
-    });
+        getDataBoardFromAPI().then(r => console.log("then : " + isPixelOverride))
+    }, []);
 
 
     /*Array of rows*/
-    let rows = [];
+    /*let rows = [];
     for (let i = 0; i < height; i++) {
         rows.push(<Row
             key={i}
@@ -58,7 +61,7 @@ function PixelBoard() {
             background={background}
             isPixelOverride={isPixelOverride}
         />)
-    }
+    }*/
 
 
     return (
@@ -70,7 +73,17 @@ function PixelBoard() {
                 />
             </div>
             <div className="pixelBoardRows">
-                {rows}
+                {
+                    [...Array(height)].map((x, i) =>
+                        <Row
+                            key={i}
+                            positionX={i}
+                            width={width}
+                            background={background}
+                            isPixelOverride={isPixelOverride}
+                            myPixelBoard={id}
+                        />)
+                }
             </div>
 
         </div>

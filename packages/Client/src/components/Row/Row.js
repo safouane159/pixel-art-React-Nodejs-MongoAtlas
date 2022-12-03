@@ -6,7 +6,7 @@ import Pixel from "../Pixel/Pixel";
 function Row(props) {
 
 
-    const {positionX, width, background, isPixelOverride} = props;
+    const {positionX, width, background, isPixelOverride, myPixelBoard} = props;
 
     let pixels = [];
 
@@ -17,6 +17,7 @@ function Row(props) {
             positionY={i}
             background={background}
             isPixelOverride={isPixelOverride}
+            myPixelBoard={myPixelBoard}
         />);
     }
 

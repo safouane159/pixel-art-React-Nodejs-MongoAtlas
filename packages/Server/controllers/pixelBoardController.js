@@ -35,8 +35,8 @@ exports.getPixelBoardById = async (req, res) => {
 
 exports.updatePixelBoard = async (req, res) => {
     try {
-        const pixelBoard = await PixelBoardService.updatePixelBoard(req.params.Pseudo, req.body);
-        res.json({data: pixelBoard.Pseudo, status: "success"});
+        const pixelBoard = await PixelBoardService.updatePixelBoard(req.params.id, req.body);
+        res.json({data: pixelBoard.id, status: "success"});
     } catch (err) {
         res.status(500).json({error: err.message});
     }

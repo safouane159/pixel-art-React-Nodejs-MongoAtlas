@@ -5,7 +5,7 @@
 
 1. SAMIA OUSSAMA (@oussamasamia) : Création et gestion du Pixel board
 2. OUAZRI SAFOUANE (safouane159) : Création du Serveur et gestion de la base de données
-3. MESSAI RAOUA (raoua-messai) : S'occuper de la partie Front
+3. MESSAI RAOUA (raoua-messai) : Partie Front-end
 4. Jules Vesnat (vj703676) : 
 
 ### Lancer le projet 

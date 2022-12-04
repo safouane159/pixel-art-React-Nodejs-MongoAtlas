@@ -6,6 +6,7 @@ const {MongoClient} = require('mongodb');
 const {Schema, model, mongoose} = require('mongoose');
 const app = express();
 const PORT = 8080;
+var bcrypt = require('bcryptjs');
 const router = express.Router();
 require('dotenv').config();
 const userRouter = require("./routes/userRoutes");
@@ -14,19 +15,25 @@ const pixelBoardRouter = require("./routes/pixelBoardRoutes");
 const cors = require('cors');
 require('dotenv').config();
 app.use(express.json())
+const config = process.env;
 
+var jwt = require("jsonwebtoken");
+const auth = require("./middleware/auth");
 
+app.get("/welcome", auth, (req, res) => {
+  res.status(200).send("Welcome 🙌 ");
+});
 app.use(cors({
     origin: '*'
   }));
 
 
-  app.use('/login', (req, res) => {
+  /*app.use('/login', (req, res) => {
     res.send({
       token: 'test123'
     });
   });
-
+*/
 
 const {
     MONGO_URI
@@ -74,8 +81,45 @@ async function toSave() {
 }
 
 //toSave().catch(err => console.log(err));
+app.post("/login", async (req, res) => {
 
-app.get('/', (req, res) => {
+    // Our login logic starts here
+    try {
+      // Get user input
+      const { pseudo, name } = req.body;
+  
+      // Validate user input
+      if (!(pseudo && name)) {
+        res.status(400).send("All input is required");
+      }
+      // Validate if user exist in our database
+      const user = await User.findOne({ pseudo });
+  
+      if (user) {
+        console.log( user._id);
+        // Create token
+        const token = jwt.sign(
+          { user_id: user._id, pseudo },
+          process.env.TOKEN_KEY,
+          {
+            expiresIn: "2h",
+          }
+        );
+  console.log
+        // save user token
+        user.token = token;
+  
+        // user
+        res.status(200).json(user);
+      }
+      res.status(400).send("Invalid Credentials");
+    } catch (err) {
+      console.log(err);
+    }
+    // Our register logic ends here
+  });
+  
+app.get('/',auth, (req, res) => {
   //  const u = new User("saf", "saf", "daf");
     res.send('Hello World' );
 });
@@ -93,11 +137,11 @@ app.get('/tests', async (req, res) => {
 
 
 
-  app.use("/api/users", userRouter);
-  app.use("/api/pixels", pixelRouter);
-  app.use("/api/pixelBoard", pixelBoardRouter);
+  app.use("/api/users",auth, userRouter);
+  app.use("/api/pixels", auth,pixelRouter);
+  app.use("/api/pixelBoard",auth, pixelBoardRouter);
   
-app.get('/helloWorld', (req, res) => {
+app.get('/helloWorld', auth,(req, res) => {
     res.send('Raoua');
 });
 

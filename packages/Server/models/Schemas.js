@@ -4,6 +4,9 @@ const userSchema = new mongoose.Schema({
     name: String,
     pseudo: { type: String, unique: true }, 
     type: String,
+    
+  password: { type: String },
+  token: { type: String },
     pixels: [{type: Schema.Types.ObjectId, ref: "Pixel"}],
     pixelBoard: {type: Schema.Types.ObjectId, ref: "PixelBoard"}
 

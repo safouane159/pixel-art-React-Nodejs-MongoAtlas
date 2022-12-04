@@ -16,7 +16,7 @@ exports.getAllPixels = async () => {
  };
   
  exports.updatePixel = async (id, pixel) => {
-   return await Pixel.findByidAndUpdate(id, pixel);
+   return await Pixel.findByIdAndUpdate(id, pixel);
  };
   
  exports.deletePixel = async (id) => {

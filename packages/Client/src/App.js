@@ -8,6 +8,7 @@ import useToken from './useToken';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import PixelCard from './components/PixelCards/PixelCard'
+import Properties from './components/Properties/Properties';
 
 function setToken(userToken) {
     sessionStorage.setItem('token', JSON.stringify(userToken));
@@ -28,6 +29,11 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <Navbar></Navbar>
+                <Switch>
+                    <Route path="/Properties">
+                        <Properties/>
+                    </Route>
+                </Switch>
 
                 <Switch>
                     <Route path="/PixelCard">

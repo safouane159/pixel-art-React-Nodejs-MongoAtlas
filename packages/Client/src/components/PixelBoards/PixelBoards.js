@@ -47,6 +47,7 @@ function PixelBoards() {
 
     return (
         <div className={"pixelBoards"}>
+            <h1>Pixel Boards created</h1>
             {pixels}
         </div>
     )

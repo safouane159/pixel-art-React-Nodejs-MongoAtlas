@@ -10,7 +10,7 @@ import {
 
 const Footer = () => {
     return (
-        <Box style={{position: "relative",padding:"10px"}}>
+        <Box>
             <p style={{
                 color: "white",
                 textAlign: "center",

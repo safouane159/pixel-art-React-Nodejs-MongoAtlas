@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import AdminPixelBoard from "./components/AdminPixelBoard/AdminPixelBoard";
-import {BrowserRouter, HashRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, HashRouter, Route, Switch, Redirect} from "react-router-dom";
 import PixelBoard from "./components/PixelBoard/PixelBoard";
 import PixelBoards from "./components/PixelBoards/PixelBoards";
 import Login from './components/Login/Login';
@@ -30,6 +30,9 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <Navbar></Navbar>
+                <Route exact path="/">
+    <Redirect to={"/pixelBoards"} />
+</Route>
                 <Switch>
                     <Route path="/Properties">
                         <Properties/>
@@ -53,6 +56,7 @@ function App() {
                 </Switch>
 
                 <Switch>
+               
                     <Route path={"/pixelBoards"}>
                         <PixelBoards/>
                     </Route>

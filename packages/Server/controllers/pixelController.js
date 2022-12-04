@@ -9,33 +9,33 @@ exports.getByPosition = async (req, res) => {
 
     const pb = await PixelBoardService.getPixelBoardById(req.query.pbId);
 
+    //console.log(pb);
     try {
-        let isFound = false;
 
         let pixelId;
 
-        pb.pixels.forEach((element) => {
+        pb.pixels.forEach(async (element, index) => {
 
-            if (element.positionX == req.params.posX && element.positionY == req.params.posY) {
+            const pixel = await PixelService.getPixelById(element);
+            //console.log(pixel);
 
-                pixelId = element._id;
-                // res.json({data: element._id, status: "success"});
-                isFound = true;
-            }
+            if (pixel.positionX == req.query.posX && pixel.positionY == req.query.posY) {
 
-            if (isFound == false) {
-                res.status(404).send('pixel with X =' + req.params.posX + 'and Y = ' + req.params.posY + ' Not found');
+                pixelId = pixel._id;
+                //console.log(element);
+                //console.log(req.params.posX);
+                res.json({data: element._id, status: "success"});
+
             }
 
 
         });
 
-
-        res.json({data: pixelId, status: "success"});
+        //res.json({data: pixelId, status: "success"});
 
 
     } catch {
-        res.status(404).send('pixelBoard with id =' + req.params.pbId + ' Not found');
+        res.status(404).send('NOT FOUND');
 
     }
 

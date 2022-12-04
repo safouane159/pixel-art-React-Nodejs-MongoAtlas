@@ -4,7 +4,7 @@
 
 .navbar {
   background-color: #22354c;
-  height: 55px;
+  height: 60px;
   display: flex;
   justify-content: start;
   align-items: center;
@@ -18,7 +18,7 @@
 
 .nav-menu {
   background-color: #22354c;
-  width: 180px;
+  width: 18%;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -74,4 +74,20 @@
 
 span {
   margin-left: 16px;
+}
+@media screen and (max-width: 700px) {
+  .nav-menu {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .nav-menu a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .nav-menu a {
+    text-align: center;
+    float: none;
+  }
 }

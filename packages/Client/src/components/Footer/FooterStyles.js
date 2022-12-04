@@ -5,6 +5,10 @@ background: #22354c;
 position: absolute;
 bottom: 0;
 width: 100%;
+position: fixed;
+left: 0;
+    
+
 
 `;
 

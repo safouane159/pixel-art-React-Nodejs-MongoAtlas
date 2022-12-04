@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {TwitterPicker} from 'react-color';
-
+import { exportComponentAsPNG, exportComponentAsJPEG } from 'react-component-export-image';
 import "./PixelBoard.css";
 import Row from "../Row/Row";
 import {useParams} from "react-router-dom";
@@ -12,6 +12,7 @@ function PixelBoard() {
     /*Id from React Router*/
     let {id} = useParams();
     const server_url = "http://localhost:8080";
+    const componentRef = useRef();
 
 
     /* PixelBoard States */
@@ -83,7 +84,7 @@ function PixelBoard() {
             <div id={"spinner"} style={{textAlign:"center"}}>
                 <GridLoader color="#22354c"/>
             </div>
-            <div className="pixelBoardRows">
+            <div className="pixelBoardRows" ref={componentRef}>
                 {/*
                     [...Array(height)].map((x, i) =>
                         <Row
@@ -96,8 +97,19 @@ function PixelBoard() {
                         />)
                 */}
                 {rows}
-            </div>
 
+            </div>
+            <div className='button-outline'>
+            <button
+
+        onClick={() => exportComponentAsPNG(componentRef)}
+      > Export as PNG
+      </button>
+      <button
+
+        onClick={() => exportComponentAsJPEG(componentRef)}
+      > Export as JPG
+      </button></div>
         </div>
     )
 

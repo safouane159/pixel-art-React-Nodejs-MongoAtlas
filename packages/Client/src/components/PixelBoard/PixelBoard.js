@@ -4,6 +4,7 @@ import {TwitterPicker} from 'react-color';
 import "./PixelBoard.css";
 import Row from "../Row/Row";
 import {useParams} from "react-router-dom";
+import GridLoader from "react-spinners/ClipLoader";
 
 
 function PixelBoard() {
@@ -72,11 +73,15 @@ function PixelBoard() {
 
     return (
         <div className={"pixelBoard"}>
+
             <div className="pixelBoardColorPanel">
                 <TwitterPicker
                     color={background}
                     onChangeComplete={handleChangeComplete}
                 />
+            </div>
+            <div id={"spinner"} style={{textAlign:"center"}}>
+                <GridLoader color="#22354c"/>
             </div>
             <div className="pixelBoardRows">
                 {/*

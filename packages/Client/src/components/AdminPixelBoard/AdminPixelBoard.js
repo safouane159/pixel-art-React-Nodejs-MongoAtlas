@@ -10,8 +10,7 @@ function AdminPixelBoard() {
         e.preventDefault();
 
         /*Creation PixelBoard*/
-        let isFinal = document.getElementById("isFinal").checked;
-        let isWhite = document.getElementById("isWhite").checked;
+        let isFinal = !document.getElementById("isFinal").checked;
         let titre = document.getElementById("title").value;
         let height = document.getElementById("height").value;
         let width = document.getElementById("width").value;
@@ -21,13 +20,10 @@ function AdminPixelBoard() {
         let pixelBoard = {};
         pixelBoard.isFinished = false;
         pixelBoard.isFinal = isFinal ? isFinal : false;
-        pixelBoard.isWhite = isWhite ? isWhite : false;
         pixelBoard.titre = titre ? titre : "";
         pixelBoard.height = height ? height : 5;
         pixelBoard.width = width ? width : 5;
         pixelBoard.dateFinish = dateFinish ? dateFinish : null;
-
-
 
 
         await fetch(server_url + "/api/pixelBoard/", {
@@ -94,6 +90,16 @@ function AdminPixelBoard() {
 
     }
 
+    const changeIsFinalText = () => {
+        let isFinal = document.getElementById("isFinal").checked;
+
+        if (isFinal) {
+            document.getElementById("isFinal-conclusion").innerText = "Oui";
+        } else {
+            document.getElementById("isFinal-conclusion").innerText = "Non";
+        }
+    }
+
 
     return (
         <div className={"adminPixelBoard"}>
@@ -101,29 +107,26 @@ function AdminPixelBoard() {
 
             <form onSubmit={hundleSubmitForm}>
 
-                <div>
-                    <label htmlFor="isFinal">isFinal</label>
-                    <input type="checkbox" id={"isFinal"}/>
+                <div className={"field-container"}>
+                    <label htmlFor="isFinal">Donnez la possibilité de re-modifier un pixel ?</label>
+                    <input type="checkbox" id={"isFinal"} onChange={changeIsFinalText}/>
+                    <label id={"isFinal-conclusion"}>Non</label>
                 </div>
-                <div>
-                    <label htmlFor="isWhite">isWhite</label>
-                    <input type="checkbox" id={"isWhite"}/>
-                </div>
-                <div>
+                <div className={"field-container"}>
                     <label htmlFor="title">Titre</label>
                     <input type="text" id={"title"}/>
                 </div>
-                <div>
-                <label htmlFor="title">Dimensions</label>
-                    <input type="number" id={"height"} defaultValue={16}/>
-                    <input type="number" id={"width"} defaultValue={16}/>
+                <div className={"field-container"}>
+                    <label htmlFor="title">Dimensions</label>
+                    <input type="number" id={"height"} defaultValue={5}/>
+                    <input type="number" id={"width"} defaultValue={5}/>
                 </div>
 
-                <div>
-                    <input type="datetime-local" id={"dateFinish"} />
+                <div className={"field-container"}>
+                    <input type="datetime-local" id={"dateFinish"}/>
                 </div>
                 <input type="submit" value="Créer un pixel board"></input>
-                
+
             </form>
         </div>
     );

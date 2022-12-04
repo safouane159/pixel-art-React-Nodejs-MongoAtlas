@@ -49,3 +49,10 @@ input[type=text], select {
 h1{
     text-align: center;
 }
+
+.field-container{
+  border: 1px solid #c3c0c0;
+  padding: 10px;
+  border-radius: 15px;
+  margin: 10px;
+}

@@ -35,6 +35,11 @@ function PixelBoard() {
             method: "GET"
         });
 
+        /*Test if Pixel Board exist*/
+        if(! response.ok){
+            window.location = "/";
+        }
+
         let data = (await response.json()).data;
 
         setHeight(data.height);

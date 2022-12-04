@@ -1,13 +1,5 @@
 # Pixel Art
 
-Le nom du projet 
-Pour chaque participant 
-nom prénom identifiant github
-Tâches effectuées
-BONUS : L'URL du projet en ligne
-Si nécessaire identifiant / mot de passe pour accéder à l'application
-Comment lancer le projet from scratch (liste des commandes)
-
 
 ## Les membres du groupe 
 

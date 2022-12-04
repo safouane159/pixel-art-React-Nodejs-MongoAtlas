@@ -14,3 +14,17 @@ Pour lancer le projet il faut :
 1. lancer ./install-packages.sh dans la racine du projet
 2. Dans un premier terminal lancer ./client.sh 
 3. Dans un deuxième terminal lancer ./server.sh
+
+### Fonctionnalités implémentées :
+
+ - Créer un pixel Board.
+ - Donner la possibilité de re-modifier un pixel
+ - Donner un titre au pixel Board
+ - Préciser les dimensions du Pixel Board
+ - Mettre une date de fin du pixel Board
+ - Exporter le Pixel Board en PNG ou en JPG 
+
+### Technologies utilisés :
+- MongoDB
+- React 
+- NodeJs

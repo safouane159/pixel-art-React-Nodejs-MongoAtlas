@@ -43,6 +43,8 @@ function Pixel(props) {
                         //console.log(response);
                         setColor(response.data.color);
                         setChecked(response.data.isChecked);
+
+                        document.getElementById('spinner').hidden = true;
                     });
 
 

@@ -4,6 +4,7 @@ import { exportComponentAsPNG, exportComponentAsJPEG } from 'react-component-exp
 import "./PixelBoard.css";
 import Row from "../Row/Row";
 import {useParams} from "react-router-dom";
+import GridLoader from "react-spinners/ClipLoader";
 
 
 function PixelBoard() {
@@ -73,11 +74,15 @@ function PixelBoard() {
 
     return (
         <div className={"pixelBoard"}>
+
             <div className="pixelBoardColorPanel">
                 <TwitterPicker
                     color={background}
                     onChangeComplete={handleChangeComplete}
                 />
+            </div>
+            <div id={"spinner"} style={{textAlign:"center"}}>
+                <GridLoader color="#22354c"/>
             </div>
             <div className="pixelBoardRows" ref={componentRef}>
                 {/*
@@ -92,16 +97,16 @@ function PixelBoard() {
                         />)
                 */}
                 {rows}
-      
+
             </div>
             <div className='button-outline'>
-            <button 
-        
+            <button
+
         onClick={() => exportComponentAsPNG(componentRef)}
       > Export as PNG
       </button>
-      <button 
-       
+      <button
+
         onClick={() => exportComponentAsJPEG(componentRef)}
       > Export as JPG
       </button></div>

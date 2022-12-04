@@ -30,32 +30,34 @@ input[type=text], select {
     height: 25px;
     width: 25px;
     cursor: pointer;
-  }
+}
 
-  input[type=number] {
+input[type=number] {
     height: 30px;
     width: 100px;
     margin: 10px;
     border: none;
     border-radius: 4px;
-  }
-  
-  label{
+}
+
+label {
     display: block;
-  }
-  form {
+}
+
+form {
     margin: 5% 27%;
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 30px;
 }
-h1{
+
+h1 {
     text-align: center;
 }
 
-.field-container{
-  border: 1px solid #c3c0c0;
-  padding: 10px;
-  border-radius: 15px;
-  margin: 10px;
+.field-container {
+    border: 1px solid #22354c;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 10px;
 }

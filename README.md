@@ -27,4 +27,5 @@ Pour lancer le projet il faut :
 ### Technologies utilisés :
 - MongoDB
 - React 
+- CSS
 - NodeJs

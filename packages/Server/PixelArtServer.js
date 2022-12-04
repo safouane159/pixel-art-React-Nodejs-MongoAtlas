@@ -80,22 +80,71 @@ async function toSave() {
 
 }
 
+app.post("/register", async (req, res) => {
+
+    // Our register logic starts here
+    try {
+      // Get user input
+      const { name,pseudo,type, password } = req.body;
+  
+      // Validate user input
+      if (!(pseudo && password && name )) {
+        res.status(400).send("All input is required");
+      }
+  
+      // check if user already exist
+      // Validate if user exist in our database
+      const oldUser = await User.findOne({ pseudo });
+  
+      if (oldUser) {
+        return res.status(409).send("User Already Exist. Please Login");
+      }
+  
+      //Encrypt user password
+      encryptedPassword = await bcrypt.hash(password, 10);
+  
+      // Create user in our database
+      const user = await User.create({
+        name,
+        pseudo: pseudo.toLowerCase(),
+        type: "utilisateur",
+        password: encryptedPassword,
+      });
+  
+      // Create token
+      const token = jwt.sign(
+        { user_id: user._id, pseudo },
+        process.env.TOKEN_KEY,
+        {
+          expiresIn: "2h",
+        }
+      );
+      // save user token
+      user.token = token;
+  
+      // return new user
+      res.status(201).json(user);
+    } catch (err) {
+      console.log(err);
+    }
+    // Our register logic ends here
+  });
 //toSave().catch(err => console.log(err));
 app.post("/login", async (req, res) => {
 
     // Our login logic starts here
     try {
       // Get user input
-      const { pseudo, name } = req.body;
+      const { pseudo, password } = req.body;
   
       // Validate user input
-      if (!(pseudo && name)) {
+      if (!(pseudo && password)) {
         res.status(400).send("All input is required");
       }
       // Validate if user exist in our database
       const user = await User.findOne({ pseudo });
   
-      if (user) {
+      if (user && (await bcrypt.compare(password, user.password)) ) {
         console.log( user._id);
         // Create token
         const token = jwt.sign(
@@ -111,8 +160,8 @@ app.post("/login", async (req, res) => {
   
         // user
         res.status(200).json(user);
-      }
-      res.status(400).send("Invalid Credentials");
+      }else{     res.status(400).send("Invalid Credentials"); }
+  
     } catch (err) {
       console.log(err);
     }

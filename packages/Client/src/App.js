@@ -3,6 +3,7 @@ import './App.css';
 import AdminPixelBoard from "./components/AdminPixelBoard/AdminPixelBoard";
 import {BrowserRouter, HashRouter, Route, Switch} from "react-router-dom";
 import PixelBoard from "./components/PixelBoard/PixelBoard";
+import PixelBoards from "./components/PixelBoards/PixelBoards";
 import Login from './components/Login/Login';
 import useToken from './useToken';
 import Navbar from './components/Navbar/Navbar';
@@ -37,17 +38,26 @@ function App() {
 
                 <Switch>
                     <Route path="/PixelCard">
-                        <PixelCard/>
+
                     </Route>
                 </Switch>
+
                 <Switch>
                     <Route path="/pixelBoard">
                         <AdminPixelBoard/>
                     </Route>
                 </Switch>
-                <Route path={"/pixelBoard/:id"} children={<PixelBoard/>}/>
-                <Footer/>
+                <Switch>
+                    <Route path={"/pb/:id"} children={<PixelBoard/>}/>
+                </Switch>
+
+                <Switch>
+                    <Route path={"/pixelBoards"}>
+                        <PixelBoards/>
+                    </Route>
+                </Switch>
             </BrowserRouter>
+            <Footer/>
         </div>
 
     );

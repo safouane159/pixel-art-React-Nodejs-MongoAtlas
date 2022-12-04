@@ -11,16 +11,11 @@ import {
 
 function PixelCard() {
   return (
-    <MDBCard>
-      <MDBCardImage src='https://mdbootstrap.com/img/new/standard/nature/184.webp' position='top' alt='...' />
-      <MDBCardBody>
-        <MDBCardTitle>Pixel Card title</MDBCardTitle>
-        <MDBCardText>
-        Date of creation
-        </MDBCardText>
-        <MDBBtn href='#'>More details</MDBBtn>
-      </MDBCardBody>
-    </MDBCard>
+      <div className={"pb-card"}>
+        <div>Title</div>
+        <div>Date creation</div>
+        <div>Temps restant</div>
+      </div>
   );
 }
 

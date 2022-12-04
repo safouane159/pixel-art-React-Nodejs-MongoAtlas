@@ -1,0 +1,6 @@
+.pixelBoards{
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+    margin: 0 10%;
+}

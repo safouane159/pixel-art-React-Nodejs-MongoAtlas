@@ -1,5 +1,9 @@
-.card{
-    width: 40%;
-    margin: 0 auto;
+.pb-card{
+    width: 90%;
     padding: 10px;
+    text-align: center;
+    margin: 20px;
+    flex: 0 1 calc(20% - 8px); /* <-- adjusting for margin */
+    border: 1px solid #8080804a;
+    border-radius: 13px;
 }

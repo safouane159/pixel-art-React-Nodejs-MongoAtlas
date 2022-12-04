@@ -15,6 +15,7 @@ function AdminPixelBoard() {
         let titre = document.getElementById("title").value;
         let height = document.getElementById("height").value;
         let width = document.getElementById("width").value;
+        let dateFinish = document.getElementById("dateFinish").value;
 
 
         let pixelBoard = {};
@@ -24,6 +25,9 @@ function AdminPixelBoard() {
         pixelBoard.titre = titre ? titre : "";
         pixelBoard.height = height ? height : 16;
         pixelBoard.width = width ? width : 16;
+        pixelBoard.dateFinish = dateFinish ? dateFinish : null;
+
+
 
 
         await fetch(server_url + "/api/pixelBoard/", {
@@ -113,6 +117,10 @@ function AdminPixelBoard() {
                 <label htmlFor="title">Dimensions</label>
                     <input type="number" id={"height"} defaultValue={16}/>
                     <input type="number" id={"width"} defaultValue={16}/>
+                </div>
+
+                <div>
+                    <input type="datetime-local" id={"dateFinish"} />
                 </div>
                 <input type="submit" value="Créer un pixel board"></input>
                 

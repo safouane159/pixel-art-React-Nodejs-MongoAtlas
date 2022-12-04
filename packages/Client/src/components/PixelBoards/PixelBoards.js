@@ -7,7 +7,7 @@ function PixelBoards() {
     const server_url = "http://localhost:8080";
 
 
-    const [pixelBoards, setPixelBoards] = useState([<PixelCard/>, <PixelCard/>,]);
+    const [pixelBoards, setPixelBoards] = useState([]);
 
     useEffect(() => {
 
@@ -22,16 +22,32 @@ function PixelBoards() {
             method: "GET",
         }).then(response => response.json())
             .then(response => {
-                console.log(response)
+                setPixelBoards(response.data)
+                console.log(response.data)
             });
+    }
+
+
+    let pixels = [];
+
+    for (let i = 0; i < pixelBoards.length; i++) {
+        const pixel = pixelBoards[i];
+        pixels.push(
+            <PixelCard
+                title={pixel.titre}
+                isFinished={pixel.isFinished}
+                isFinal={pixel.isFinal}
+                dimX={pixel.width}
+                dimY={pixel.height}
+                finishDate={pixel.dateFinish}
+                idBoard={pixel._id}
+            />);
     }
 
 
     return (
         <div className={"pixelBoards"}>
-            {
-                pixelBoards
-            }
+            {pixels}
         </div>
     )
 }

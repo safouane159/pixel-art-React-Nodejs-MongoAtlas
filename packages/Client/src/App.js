@@ -37,10 +37,11 @@ function App() {
                 </Switch>
 
                 <Switch>
-                    <Route path="/PixelCard">
-
+                    <Route path="/login">
+                        <Login/>
                     </Route>
                 </Switch>
+
 
                 <Switch>
                     <Route path="/pixelBoard">

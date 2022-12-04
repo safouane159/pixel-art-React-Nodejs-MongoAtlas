@@ -23,8 +23,8 @@ function AdminPixelBoard() {
         pixelBoard.isFinal = isFinal ? isFinal : false;
         pixelBoard.isWhite = isWhite ? isWhite : false;
         pixelBoard.titre = titre ? titre : "";
-        pixelBoard.height = height ? height : 16;
-        pixelBoard.width = width ? width : 16;
+        pixelBoard.height = height ? height : 5;
+        pixelBoard.width = width ? width : 5;
         pixelBoard.dateFinish = dateFinish ? dateFinish : null;
 
 

@@ -20,29 +20,41 @@ function Pixel(props) {
     /*Change newColor from props*/
     useEffect(() => {
         setNewColor(background);
-
     }, [background]);
 
 
-    useEffect(async () => {
-        await fetch(server_url + '/api/pixels/getByPosition?pbId=' + myPixelBoard + '&posY=' + posY + '&posX=' + posX, {
-            method: "GET",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then(response => response.json())
-            .then(response => {
-                console.log(response)
-            }).catch(error => console.log(error));
-
+    useEffect(() => {
+        getMyId();
     }, []);
 
+
+    const getMyId = async () => {
+        await fetch(server_url + '/api/pixels/getByPosition?pbId=' + myPixelBoard + '&posY=' + posY + '&posX=' + posX, {
+            method: "GET",
+        }).then(response => response.json())
+            .then(async response => {
+                setMyId(response.data);
+
+                /*Get Pixel Data*/
+                await fetch(server_url+ '/api/pixels/'+response.data,{
+                    method:"GET"
+                }).then(response => response.json())
+                    .then(response => {
+                       console.log(response);
+                       setColor(response.data.color);
+                       setChecked(response.data.isChecked);
+                    });
+
+
+            });
+    }
 
     const changePixelColor = async () => {
 
         if (checked && !isOverride)
             return;
+
+        console.log(color);
         setColor(newColor);
         setChecked(true);
 

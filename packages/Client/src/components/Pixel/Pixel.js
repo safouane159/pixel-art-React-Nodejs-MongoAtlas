@@ -36,13 +36,13 @@ function Pixel(props) {
                 setMyId(response.data);
 
                 /*Get Pixel Data*/
-                await fetch(server_url+ '/api/pixels/'+response.data,{
-                    method:"GET"
+                await fetch(server_url + '/api/pixels/' + response.data, {
+                    method: "GET"
                 }).then(response => response.json())
                     .then(response => {
-                       console.log(response);
-                       setColor(response.data.color);
-                       setChecked(response.data.isChecked);
+                        //console.log(response);
+                        setColor(response.data.color);
+                        setChecked(response.data.isChecked);
                     });
 
 
@@ -55,17 +55,27 @@ function Pixel(props) {
             return;
 
         console.log(color);
-        setColor(newColor);
-        setChecked(true);
+        //setColor(newColor);
+        //setChecked(true);
 
-        /*await fetch(server_url + "/api/pixels/", {
-            method: "POST",
+        let pixel = {};
+        pixel.isChecked = true;
+        pixel.color = newColor;
+        pixel.positionX = posX;
+        pixel.positionY = posY;
+        pixel.pixelBoard = myPixelBoard;
+
+        console.log(pixel);
+        await fetch(server_url + "/api/pixels/" + myId, {
+            method: "PUT",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(pixel),
-        });*/
+        }).then(() => {
+            getMyId();
+        });
 
     }
 

@@ -3,9 +3,9 @@
 
 ## Les membres du groupe 
 
-1. SAMIA OUSSAMA (@oussamasamia) : Création et gestion du Pixel board
-2. OUAZRI SAFOUANE (safouane159) : Création du Serveur et gestion de la base de données
-3. MESSAI RAOUA (raoua-messai) : Partie Front-end
+1. SAMIA OUSSAMA (@oussamasamia) : Création et gestion du Pixel board et Pixel, Création des scripts, Conception 
+2. OUAZRI SAFOUANE (safouane159) : Création du Serveur et gestion de la base de données, Conception 
+3. MESSAI RAOUA (raoua-messai) : Partie Front-end, Conception 
 4. Jules Vesnat (vj703676) : 
 
 ### Lancer le projet 
